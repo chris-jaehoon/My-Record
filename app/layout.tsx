@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import ThemeToggle from "@/components/ThemeToggle";
 import { SITE } from "@/lib/site";
 import "./globals.css";
@@ -89,12 +88,11 @@ export default function RootLayout({
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
 
-        {/* Google AdSense — loaded only when a publisher id is configured. */}
+        {/* Google AdSense — a plain async tag so the publisher script is present
+            in the exported HTML itself, not only after hydration. */}
         {adsenseId ? (
-          <Script
-            id="adsense-init"
+          <script
             async
-            strategy="afterInteractive"
             crossOrigin="anonymous"
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
           />

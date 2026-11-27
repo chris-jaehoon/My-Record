@@ -1,9 +1,4 @@
 # Google AdSense — ads.txt
 #
-# 1) Google AdSense 에서 사이트를 승인받으면 아래 주소에서 발급되는 한 줄을 그대로 쓰면 됩니다.
-#    https://adsense.google.com  →  사이트  →  ads.txt
-# 2) 발급받은 줄의 pub-XXXXXXXXXXXXXXXX 를 본인 Publisher ID 로 바꾸고,
-#    google.com 으로 시작하는 줄 앞의 "# " 를 지우세요.
-# 3) 저장 후 커밋하면 https://chris-jaehoon.github.io/My-Record/ads.txt 에 반영됩니다.
-#
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# 아래 한 줄이 그대로 서빙됩니다: https://chris-jaehoon.github.io/My-Record/ads.txt
+google.com, pub-4278170914101108, DIRECT, f08c47fec0942fa0

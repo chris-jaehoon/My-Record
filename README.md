@@ -40,12 +40,13 @@ tags: ["AI", "LLM"]
 
 1. [AdSense](https://adsense.google.com) 에서 사이트(`chris-jaehoon.github.io/My-Record`)를 추가하고 승인을 받습니다.
 2. 발급받은 **Publisher ID**(`ca-pub-...`)를 환경변수로 넣습니다.
-   - 로컬: `.env.local` 에 `NEXT_PUBLIC_ADSENSE_ID=ca-pub-...`
+   - 이 저장소는 `.env.production` 에 `NEXT_PUBLIC_ADSENSE_ID=ca-pub-4278170914101108` 을 커밋해 두어 `npm run deploy` 빌드에 그대로 적용됩니다.
+   - 로컬에서 다른 값을 쓸 때: `.env.local` 에 `NEXT_PUBLIC_ADSENSE_ID=ca-pub-...`
    - GitHub Actions: 저장소 **Settings → Secrets and variables → Actions → Variables** 에 `NEXT_PUBLIC_ADSENSE_ID` 추가 (워크플로가 이 값을 빌드에 넘깁니다)
 3. 광고 단위를 만들고 슬롯 ID 두 개를 변수로 넣습니다.
    - `NEXT_PUBLIC_ADSENSE_SLOT_TOP` (본문 상단)
    - `NEXT_PUBLIC_ADSENSE_SLOT_BOTTOM` (본문 하단)
-4. `public/ads.txt` 의 안내대로 `google.com, pub-..., DIRECT, f08c47fec0942fa0` 한 줄을 활성화합니다.
+4. `public/ads.txt` 에 `google.com, pub-4278170914101108, DIRECT, f08c47fec0942fa0` 한 줄이 활성화되어 있습니다.
 5. 값이 비어 있으면 AdSense 스크립트는 로드되지 않고 광고 영역도 렌더링되지 않습니다(로컬 개발에서만 점선 플레이스홀더 표시).
 
 ## 배포
