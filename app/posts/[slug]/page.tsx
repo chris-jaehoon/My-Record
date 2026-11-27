@@ -152,17 +152,13 @@ export default async function PostPage({ params }: PageProps) {
                 <span className="post-nav__label">이전 글</span>
                 <span className="post-nav__title">{older.title}</span>
               </Link>
-            ) : (
-              <span />
-            )}
+            ) : null}
             {newer ? (
               <Link href={`/posts/${newer.slug}/`} className="post-nav__next">
                 <span className="post-nav__label">다음 글</span>
                 <span className="post-nav__title">{newer.title}</span>
               </Link>
-            ) : (
-              <span />
-            )}
+            ) : null}
           </nav>
         </article>
       </div>
