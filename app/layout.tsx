@@ -115,13 +115,6 @@ export default function RootLayout({
               <p>
                 © {new Date().getFullYear()} {SITE.author.name}
               </p>
-              <p className="site-footer__note">
-                100% 사람이 직접 쓰고 검증한 글, AI 에이전트가 읽기 좋게
-                구조화
-                <span className="site-footer__en" lang="en">
-                  {SITE.claim.badge}
-                </span>
-              </p>
             </div>
             <nav className="site-footer__links" aria-label="바깥 링크">
               <a href={`${SITE.basePath}/llms.txt`}>llms.txt</a>
