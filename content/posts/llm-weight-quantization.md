@@ -1,6 +1,6 @@
 ---
-title: "LLM 양자화하면 GPU 메모리는 얼마나 줄어들까? FP16과 INT4 비교"
-description: "2026년 11월 기준 LLM Weight 양자화의 메모리 절감량을 70B 모델로 계산하고, KV Cache 양자화와의 차이 및 실제 서빙에서 확인할 성능 지표를 정리했습니다."
+title: "LLM 양자화, 4비트면 다 같을까? PTQ부터 NVFP4까지"
+description: "2026년 11월 기준 ONNX PTQ와 LLM 양자화 모델 서빙 경험을 바탕으로 INT4, NVFP4, AWQ, GPTQ, QAT 및 Calibration 데이터 선택을 정리했습니다."
 date: "2026-11-28"
 category: "AI, SW 아키텍처"
 tags: ["LLM", "양자화", "GPU", "vLLM"]
@@ -8,7 +8,9 @@ tags: ["LLM", "양자화", "GPU", "vLLM"]
 
 LLM을 직접 띄워 쓰다 보면 모델 자체가 차지하는 GPU 메모리부터 부담스럽습니다. 저도 지금 Weight 양자화를 쓰면서 KV Cache는 별도로 오프로딩하고 있는데요. 둘 다 메모리를 아끼기 위한 방법이지만, 어느 부분을 줄이는지는 완전히 달라요.
 
-양자화를 하면 모델이 작아진다는 건 많이들 아시겠지만, 그게 실제로 컨텍스트를 얼마나 더 쓸 수 있게 해 주는지 숫자로 따져봤습니다.
+대학원에서 Depth Anything 계열 모델을 CPU에서 돌리려고 PyTorch 모델을 ONNX로 변환하고 PTQ를 적용한 경험이 있어요. 지금은 vLLM에서 NVFP4 Weight와 KV Cache 양자화를 사용하는 쪽으로 관심이 옮겨갔습니다. 같은 양자화라도 모델을 변환하는 작업과 이미 양자화된 모델을 서빙하는 작업은 구분해야 하더라고요.
+
+양자화를 하면 모델이 작아진다는 건 많이들 아시겠지만, 어떤 방식으로 숫자를 줄이고 어떤 데이터를 써야 하는지부터 정리해 봤습니다.
 
 ## FP16 모델을 INT4로 바꾸면 얼마나 줄어들까?
 
@@ -33,17 +35,64 @@ Weight 양자화로 확보한 VRAM을 KV Cache에 쓸 수 있으니, 메모리 �
 
 모델마다 구조가 다르기 때문에 이 수치를 앞에서 예로 든 모든 70B 모델에 그대로 적용하면 안 됩니다.
 
-## AWQ, GPTQ, FP8은 뭐가 다른 걸까?
+## 4비트라고 다 같은 양자화가 아니다
 
 | 방식 | 특징 |
 | --- | --- |
 | AWQ | 활성값 정보를 이용해 중요한 Weight의 양자화 오차를 줄이는 방식 |
 | GPTQ | 레이어 출력의 재구성 오차를 줄이는 방향으로 Weight를 양자화 |
 | FP8 | 8비트 부동소수점 형식으로, 지원 환경에서는 Weight와 Activation 연산에도 활용 |
+| NVFP4 | E2M1 기반 4비트 부동소수점과 작은 블록별 Scale을 사용하는 NVIDIA 형식 |
+| RTN | 정해진 Scale에 맞춰 가장 가까운 표현값으로 반올림하는 기본적인 방식 |
+| SmoothQuant | Activation의 큰 값이 양자화를 어렵게 하는 문제를 Weight 쪽으로 재분배하는 방식 |
+| NF4 | 정규분포에 가까운 Weight에 맞춘 4비트 표현 방식으로 QLoRA에 주로 사용 |
 
-AWQ와 GPTQ는 흔히 4비트 Weight 양자화에 쓰이고, FP8은 하드웨어와 커널 지원에 따라 이점이 달라집니다. 숫자만 보고 무조건 4비트가 더 빠르다고 판단하기는 어려워요.
+AWQ와 GPTQ는 흔히 4비트 Weight 양자화에 쓰이는 알고리즘이고, FP8과 NVFP4는 수를 표현하는 형식입니다. 서로 같은 분류가 아니에요. 알고리즘과 데이터 형식, Weight만 줄일지 Activation까지 줄일지, Scale을 텐서 전체에 둘지 채널이나 그룹별로 둘지까지 정해야 합니다.
+
+예를 들어 W4A16은 Weight는 4비트, Activation은 16비트로 처리한다는 뜻입니다. W4A4는 둘 다 4비트로 처리하는 구성이지만 누산 정밀도까지 반드시 4비트라는 뜻은 아니에요. 숫자만 보고 무조건 4비트가 더 빠르다고 판단하기는 어려워요.
 
 Decode 단계에서 Weight를 읽는 메모리 대역폭 부담이 줄면 빨라질 수 있지만, 반대로 역양자화 비용이나 지원하지 않는 커널 때문에 기대한 속도가 안 나올 수도 있습니다.
+
+## 모델 학습이 끝난 뒤 양자화하는 PTQ
+
+Post-Training Quantization(PTQ)은 학습이 끝난 모델을 가져와 낮은 정밀도로 변환하는 방법이에요. 보통 기존 모델 전체를 다시 학습할 필요가 없습니다. 일부 방식은 Calibration 과정에서 모델 출력이나 Weight의 양자화 오차를 줄이는 최적화를 수행하기도 합니다.
+
+반면 Quantization-Aware Training(QAT)은 학습 중에 양자화 오차를 모사해서 모델이 그 오차에 적응하도록 Weight를 업데이트합니다.
+
+| 방식 | Weight 추가 학습 | 데이터의 역할 |
+| --- | --- | --- |
+| PTQ | 일반적으로 전체 재학습 없음 | 필요에 따라 Scale과 양자화 범위 추정 |
+| QAT | 있음 | 양자화 오차에 적응하도록 학습 |
+| SFT | 있음 | 원하는 답변과 업무 방식 학습 |
+| QLoRA | 주로 Adapter만 학습 | 양자화된 Base Model 위에서 저비용 Fine-tuning |
+
+SFT나 LoRA는 모델의 답변 능력을 원하는 방향으로 바꾸는 방법이고, PTQ는 기존 모델을 낮은 정밀도로 효율적으로 실행하려는 작업입니다. 둘 다 학습 이후에 하는 일이지만 목적이 달라요.
+
+제가 대학원에서 했던 작업은 이미 학습된 Depth Estimation 모델을 ONNX로 변환한 뒤 양자화를 적용해 CPU 추론에 맞추는 작업이었습니다. 모델을 처음부터 다시 학습하는 것보다 배포 환경에 맞춰 최적화하는 데 초점이 있었어요. 당시 정확한 비트 수나 Calibration 방식은 이 글에서 확인된 기록으로 제시하지 않습니다.
+
+## Training Set과 Calibration Set은 어떻게 다를까?
+
+PTQ를 알아보다 보면 데이터가 필요한 경우가 있어서 Training Set으로 다시 학습하는 건가 싶을 수 있어요. Static PTQ에서는 대표 입력을 모델에 통과시켜 Activation 범위를 관찰하고 Scale을 정합니다. Dynamic Quantization은 실행 중 Activation의 범위에 맞춰 Scale을 정할 수 있고, Weight-only 방식 중에는 별도 입력 데이터가 필요 없는 방법도 있습니다.
+
+| 데이터 | 목적 |
+| --- | --- |
+| Training Set | 모델이나 Adapter의 Weight 학습 |
+| Calibration Set | 양자화 범위와 Scale, 방식에 따라 재구성 오차 최적화 |
+| Evaluation Set | 양자화 이후 품질 손실 확인 |
+
+예를 들어 코드 분석 모델을 양자화한다면 일반적인 대화만 Calibration에 넣는 것보다는 실제 업무에 가까운 코드, 요구사항, 검색 결과가 섞인 긴 입력도 후보에 넣어 보는 게 좋겠어요. 이미지 모델이라면 실제 배포 환경과 비슷한 이미지 분포를 고려해야 하고요.
+
+평가 데이터는 Calibration 데이터와 분리하고, 같은 입력으로 원본과 양자화 모델을 비교하는 게 중요합니다. 데이터 개수는 방법과 모델에 따라 달라요. NVIDIA Model Optimizer의 PTQ 안내에는 128~512개 샘플을 사용하는 사례가 나오지만 모든 모델에 적용되는 필수 기준은 아닙니다.
+
+이 부분은 데이터셋을 직접 구성해 실험한 LLM 결과가 아니라, 앞으로 양자화 품질을 비교할 때 적용할 기준으로 정리했습니다. SFT나 QLoRA를 직접 수행한 결과도 여기에는 포함하지 않았어요.
+
+## 지금 사용하는 NVFP4는 어떤 점이 다를까?
+
+현재 vLLM 서빙에서는 NVFP4 Weight 양자화와 KV Cache 양자화, Host RAM 기반 캐시 오프로딩을 같이 사용하고 있습니다. Weight가 작아지면 캐시에 할당할 공간이 늘고, 캐시 정밀도까지 줄이면 같은 공간에 더 많은 토큰을 보관할 여지가 생겨요.
+
+NVFP4는 4비트 값만 저장하는 게 아니라 16개 값 단위의 FP8 Scale과 상위 Scale을 함께 쓰는 형식입니다. 그래서 실제 메모리 사용량은 파라미터당 정확히 0.5 byte로 떨어지지 않습니다. GPU와 커널이 해당 형식을 제대로 지원하는지도 확인해야 해요.
+
+이 구성에서 제가 확인한 경험은 양자화 모델을 서빙하고 메모리 관리 설정을 사용하는 부분입니다. NVFP4 체크포인트를 직접 Calibration해서 제작했다고 말하는 것은 별개의 이야기입니다.
 
 ## 실제로 비교할 때는 메모리만 보면 안 된다
 
@@ -59,3 +108,5 @@ Decode 단계에서 Weight를 읽는 메모리 대역폭 부담이 줄면 빨라
 현재 제가 쓰고 있는 구성의 양자화 전후 속도나 품질 수치는 아직 이 글에 따로 넣지 않았습니다. 위 메모리 수치는 계산값이고, 2026년 11월 기준 세부 지원 방식은 GPU와 서빙 엔진 버전에 따라 달라질 수 있어요.
 
 설정할 때는 [vLLM 양자화 문서](https://docs.vllm.ai/en/latest/features/quantization/)에서 GPU별 지원 여부부터 확인하는 편이 좋겠습니다.
+
+참고: [NVIDIA PTQ 가이드](https://developer.nvidia.com/blog/optimizing-llms-for-performance-and-accuracy-with-post-training-quantization/), [Model Optimizer PTQ Recipes](https://github.com/NVIDIA/Model-Optimizer/blob/main/modelopt_recipes/ptq.md)
