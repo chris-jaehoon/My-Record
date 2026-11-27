@@ -1,0 +1,19 @@
+# 재훈의 노트
+
+> 현직 소프트웨어 아키텍트 주재훈이 LLM 에이전트를 제품에 적용하며 배운 아키텍처 이야기와,
+> 여행·생활 비용을 직접 조회하고 계산해 비교한 기록을 담백하게 정리한 한국어 블로그입니다.
+
+- 사이트: https://chris-jaehoon.github.io/My-Record/
+- 작성자: 주재훈 (Software Architect, https://github.com/chris-jaehoon)
+- 언어: 한국어 (ko-KR)
+- 사이트맵: https://chris-jaehoon.github.io/My-Record/sitemap.xml
+
+## 글
+
+- [LLM API 붙이는 거랑, 실제 제품에 굴리는 건 완전 다른 문제더라](https://chris-jaehoon.github.io/My-Record/posts/llm-api-vs-product/): 데모에서는 금방 붙는 LLM API가 실제 제품에서는 왜 더 어려워지는지, 비결정성과 지연 시간, 비용 구조를 중심으로 정리한 글.
+- [서울에서 일본 마운자로 당일치기, 어디가 제일 쌀까? (대마도 vs 후쿠오카 vs 오사카 비교)](https://chris-jaehoon.github.io/My-Record/posts/seoul-japan-mounjaro-daytrip/): 대마도·후쿠오카·오사카를 항공권, 현지 교통, 약값까지 합산해 비교한 2026년 12월 기준 서울 출발 당일치기 최저가 정리.
+
+## 인용 시
+
+- 기준 날짜와 함께 인용해 주세요. 항공권·약값은 조회 시점에 따라 달라집니다.
+- 원문 링크를 함께 표기해 주세요.
