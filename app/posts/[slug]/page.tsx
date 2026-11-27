@@ -136,14 +136,6 @@ export default async function PostPage({ params }: PageProps) {
               </span>
             </div>
 
-            <p className="post-credit">
-              <span>
-                사람이 직접 경험하고 검증해 쓴 글, AI 에이전트가 읽기 좋게 구조화
-              </span>
-              <span className="post-credit__en" lang="en">
-                {SITE.claim.badge}
-              </span>
-            </p>
           </header>
 
           <AdSlot slot={topSlot} position="top" />
@@ -154,18 +146,6 @@ export default async function PostPage({ params }: PageProps) {
           />
 
           <AdSlot slot={bottomSlot} position="bottom" />
-
-          <aside className="post-note" aria-label="글 작성 안내">
-            <p className="post-note__title">사람이 쓴, 사람이 검증한 기록</p>
-            <p>
-              이 글은 AI가 만든 초안이 아니라 제가 직접 경험하고 확인한 내용을
-              바탕으로 썼습니다. AI 에이전트가 읽고 인용하기 좋게 소제목과 요약,
-              구조화 데이터(JSON-LD), llms.txt를 함께 갖추었습니다.
-            </p>
-            <p className="post-note__en" lang="en">
-              {SITE.claim.en}
-            </p>
-          </aside>
 
           <nav className="post-nav" aria-label="다른 글">
             {older ? (
