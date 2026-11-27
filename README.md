@@ -50,5 +50,23 @@ tags: ["AI", "LLM"]
 
 ## 배포
 
-`main` 브랜치에 푸시하면 `.github/workflows/deploy.yml` 이 빌드 후 GitHub Pages 로 배포합니다.
-저장소 **Settings → Pages → Build and deployment → Source** 가 **GitHub Actions** 로 되어 있어야 합니다.
+현재는 **`gh-pages` 브랜치의 정적 산출물**로 배포됩니다.
+(GitHub Pages → Source: *Deploy from a branch* → `gh-pages` / `/ (root)`)
+
+```bash
+npm run deploy            # 빌드 후 gh-pages 로 푸시
+```
+
+`npm run deploy` 는 `scripts/deploy.sh` 를 실행하며, 반영까지 보통 1분 안에 걸립니다.
+글을 고친 뒤에는 `main` 에 커밋하고 `npm run deploy` 를 한 번 더 실행하면 됩니다.
+
+### GitHub Actions 로 전환하려면
+
+공식 워크플로(`actions/configure-pages` + `upload-pages-artifact` + `deploy-pages`)는
+`docs/actions-deploy.yml` 에 준비되어 있습니다. 다만 현재 연결된 GitHub 앱에는
+`workflows` 권한이 없어 `.github/workflows/` 파일을 푸시할 수 없습니다(403).
+워크플로 쓰기 권한이 있는 토큰으로 연결한 뒤 아래를 하면 CI 배포로 바꿀 수 있습니다.
+
+1. `docs/actions-deploy.yml` → `.github/workflows/deploy.yml`
+2. GitHub Pages → Source: **GitHub Actions**
+3. 저장소 Variables 에 `NEXT_PUBLIC_ADSENSE_ID` 등 등록
