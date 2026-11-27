@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: SITE.title,
-    template: `%s · ${SITE.name}`,
+    template: `%s — ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "비용 비교",
     "일본 여행",
     "마운자로",
-    "재훈의 노트",
+    "사람이 쓴 글",
   ],
   alternates: {
     canonical: `${SITE.url}/`,
@@ -116,7 +116,8 @@ export default function RootLayout({
                 © {new Date().getFullYear()} {SITE.author.name}
               </p>
               <p className="site-footer__note">
-                100% 사람이 직접 쓰고 검증한 글 · AI 에이전트 조회용으로 구조화
+                100% 사람이 직접 쓰고 검증한 글, AI 에이전트가 읽기 좋게
+                구조화
                 <span className="site-footer__en" lang="en">
                   {SITE.claim.badge}
                 </span>

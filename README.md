@@ -1,11 +1,11 @@
-# 재훈의 노트
+# 이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그
 
-AI · 소프트웨어 아키텍처와 숫자로 비교하는 생활 경제를 다루는 정적 블로그입니다.
+AI와 소프트웨어 아키텍처, 숫자로 비교하는 생활 경제를 다루는 정적 블로그입니다.
 Next.js App Router 의 `output: 'export'` 로 빌드해 GitHub Pages(`https://chris-jaehoon.github.io/My-Record/`)에 배포합니다.
 
 ## 구성
 
-- **프레임워크** Next.js (App Router) · TypeScript · 정적 HTML export
+- **프레임워크** Next.js (App Router), TypeScript, 정적 HTML export
 - **아이콘** `react-icons` — 테마 전환, 날짜, 읽기 시간, 뒤로가기 4곳에만 사용
 - **글** `content/posts/*.md` 마크다운 + frontmatter
 - **광고** Google AdSense 스크립트/슬롯 구조 (`components/AdSlot.tsx`, `public/ads.txt`)
@@ -22,14 +22,14 @@ npx serve out        # 빌드 결과를 로컬에서 확인
 
 ## 글 추가
 
-`content/posts/` 에 마크다운 파일을 하나 추가하면 목록·사이트맵·이전/다음 글이 자동 반영됩니다.
+`content/posts/` 에 마크다운 파일을 하나 추가하면 목록과 사이트맵, 이전/다음 글이 자동 반영됩니다.
 
 ```markdown
 ---
 title: "글 제목"
 description: "검색 결과와 AI 답변에 쓰일 한두 문장 요약"
 date: "2026-11-27"
-category: "AI · SW 아키텍처"
+category: "AI/SW 아키텍처"
 tags: ["AI", "LLM"]
 ---
 
