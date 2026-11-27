@@ -18,8 +18,8 @@
 
 ## 글
 
-- [LLM에 RAM을 더 붙이면 컨텍스트도 길어질까? KV Cache와 오프로딩](https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/): 2026년 11월 기준 KV Cache 메모리 계산과 VRAM, Host RAM, 오프로딩의 차이.
-- [LLM 양자화하면 GPU 메모리는 얼마나 줄어들까? FP16과 INT4 비교](https://chris-jaehoon.github.io/My-Record/posts/llm-weight-quantization/): 2026년 11월 기준 Weight 양자화 메모리 계산과 KV Cache 양자화, 서빙 성능 비교.
+- [LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지](https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/): 2026년 11월 기준 Dense와 MoE, Prefill과 Decode, KV Cache, GPU 병렬화와 서빙 성능 지표.
+- [LLM 양자화, 4비트면 다 같을까? PTQ부터 NVFP4까지](https://chris-jaehoon.github.io/My-Record/posts/llm-weight-quantization/): 2026년 11월 기준 ONNX PTQ 경험, 양자화 알고리즘과 데이터 형식, Calibration Set과 Training Set 비교.
 - [LLM API 붙이는 거랑, 실제 제품에 굴리는 건 완전 다른 문제더라](https://chris-jaehoon.github.io/My-Record/posts/llm-api-vs-product/): 데모에서는 금방 붙는 LLM API가 실제 제품에서는 왜 더 어려워지는지, 비결정성과 지연 시간, 비용 구조를 중심으로 정리한 글.
 - [서울에서 일본 마운자로 당일치기, 어디가 제일 쌀까? (대마도 vs 후쿠오카 vs 오사카 비교)](https://chris-jaehoon.github.io/My-Record/posts/seoul-japan-mounjaro-daytrip/): 대마도, 후쿠오카, 오사카를 항공권과 현지 교통, 약값까지 합산해 비교한 2026년 12월 기준 서울 출발 당일치기 최저가 정리.
 - [청년 버팀목 HF vs HUG, 예전처럼 무조건 HUG가 답일까? (2026년 바뀐 기준 정리)](https://chris-jaehoon.github.io/My-Record/posts/youth-beotimmok-hf-vs-hug/): 2026년 11월 기준 청년 버팀목 전세대출의 HF와 HUG 보증비율 통일, 한도 산정 방식, 추가대출 가능 여부와 HUG 내부 심사 리스크 비교.
