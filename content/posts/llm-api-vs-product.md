@@ -2,7 +2,7 @@
 title: "LLM API 붙이는 거랑, 실제 제품에 굴리는 건 완전 다른 문제더라"
 description: "데모에서는 금방 붙는 LLM API가 실제 제품에서는 왜 더 어려워지는지, 비결정성과 지연 시간, 비용 구조를 중심으로 정리한 SW 아키텍트의 기록."
 date: "2026-11-27"
-category: "AI · SW 아키텍처"
+category: "AI, SW 아키텍처"
 tags: ["AI", "LLM", "SW 아키텍처"]
 ---
 
