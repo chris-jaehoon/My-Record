@@ -1,6 +1,6 @@
 ---
 title: "LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지"
-description: "2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다."
+description: "2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen3.8 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다."
 date: "2026-11-28"
 category: "AI, SW 아키텍처"
 tags: ["LLM", "KV Cache", "vLLM", "GPU"]
@@ -25,22 +25,24 @@ Dense 모델은 일반적으로 각 토큰을 처리할 때 모든 레이어의 
 | 여러 GPU 사용 | TP, PP 등 | TP, PP, EP 등 |
 | 추가 병목 | GPU 간 통신 | Expert 쏠림과 토큰 전송 |
 
+실제 Qwen3.8 계열에도 [Dense 27B](https://huggingface.co/Qwen/Qwen3.8-27B)와 [MoE 2.4T-A95B](https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B)가 있습니다. 후자는 전체 2.4조 파라미터 중 약 950억 개가 활성화되는 모델이라 A6000 한 장과 Host RAM 512GB만으로 전체 Weight를 올리는 것은 현실적이지 않습니다. 4비트 이론값만 약 1.2TB입니다.
+
 MoE라고 KV Cache까지 활성 파라미터 비율만큼 작아지는 건 아닙니다. 캐시는 Attention 구조에 따라 따로 계산해야 해요. Expert Parallelism(EP)으로 Expert를 여러 GPU에 나눌 수도 있지만 GPU 간 통신 속도와 부하 균형이 중요합니다. 이 부분은 제가 직접 EP를 운영해 얻은 실측 결과가 아니라 모델 선택 시 고려할 구조적인 차이입니다.
 
 ## A6000 48GB 한 장으로 Qwen을 띄운다면?
 
 제가 사용하는 서버에는 Host RAM이 512GB 있고, 오프로딩은 최대 100GB까지 해봤어요. 512GB 전부를 GPU 메모리처럼 쓰는 건 아닙니다. 아래는 RTX A6000(Ampere, SM 8.6) 한 장을 기준으로 비교한 내용이고, 실제 GPU 장수나 모든 체크포인트를 직접 구동했다는 뜻은 아니에요.
 
-같은 모델에서 정밀도만 바꿔 보는 게 이해하기 편해서 Qwen2.5-32B-Instruct의 공식 Hugging Face 체크포인트를 비교해 봤습니다.
+Qwen3.8-27B를 기준으로 정밀도별 공개 체크포인트를 비교해 봤습니다. 실제 로딩에는 CUDA 작업 공간과 KV Cache도 들어갑니다.
 
-| 모델 | Weight 형식 | 체크포인트 크기(약 GB) | A6000 48GB 한 장 |
+| 모델 | Weight 형식 | 공개 파일 용량(약 GB) | A6000 48GB 한 장 |
 | --- | --- | ---: | --- |
-| [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/tree/main) | BF16 | 65.5 | Weight만으로도 초과 |
-| [GPTQ-Int8](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int8/tree/main) | INT8 | 35.1 | 로딩 여지 있음, KV 공간 제한 |
-| [GPTQ-Int4](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4/tree/main) | INT4 | 19.3 | KV 공간 확보에 유리 |
-| [AWQ](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-AWQ/tree/main) | INT4 | 19.3 | KV 공간 확보에 유리 |
+| [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) | BF16 | 55.6 | Weight만으로도 초과 |
+| [Qwen3.8-27B-FP8](https://huggingface.co/Qwen/Qwen3.8-27B-FP8) | FP8 | 30.9 | 로딩 여지 있음, 커널 확인 |
+| [derikn/Qwen3.8-27B-AWQ-INT4](https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4) | INT4 W4A16 | 19.6 | KV 공간 확보에 유리, 호환성 확인 |
+| [nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4) | 혼합 NVFP4/FP8 | 21.9 | 네이티브 FP4 미지원, 실행 가능 여부 별도 확인 |
 
-파일 목록의 safetensors 용량을 반올림한 값입니다. 디스크 용량(십진 GB)이지 실제 GPU 메모리 사용량이나 제가 측정한 tok/s가 아니에요. FP16과 BF16은 둘 다 2 bytes를 쓰므로 Weight 크기는 같은 수준입니다. 실제 로딩에는 CUDA 작업 공간과 KV Cache도 들어갑니다.
+BF16과 FP8은 Qwen 공식 배포본이고 AWQ와 NVFP4는 각각 외부 개발자와 NVIDIA의 양자화 배포본입니다. 파일 용량은 공개 자료의 근삿값으로, [AWQ 모델 카드](https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4/blob/main/README.md)와 [Hugging Face 비교 기록](https://huggingface.co/Qwen/Qwen3.8-27B/discussions/192), [INT4 비교 자료](https://huggingface.co/TelperionAI/Qwen3.8-27B-INT4-AWQ-GPTQ)를 참고했습니다. 원본은 약 55.6GB로 보고되어 있습니다. 전체 파일 목록을 직접 합산하는 조회는 완료하지 못했으므로 정확한 다운로드 크기는 각 저장소의 Files 탭에서 확인하세요. 실제 VRAM과 실측 tok/s는 아닙니다. FP16과 BF16은 둘 다 2 bytes를 사용합니다.
 
 A6000은 Ampere 기반으로 FP16/BF16, INT8/INT4 Tensor Core 연산을 지원하지만 FP8이나 NVFP4 네이티브 Tensor Core 연산은 지원하지 않아요. FP8 또는 NVFP4 체크포인트도 엔진과 버전에 따라 Weight를 복원해서 계산하는 커널로 실행할 수 있지만, 최신 GPU와 동일한 저정밀 연산 속도를 기대하면 안 됩니다.
 
@@ -97,17 +99,17 @@ GPU가 계산하는 동안 CPU와 GPU가 PCIe로 데이터를 주고받아야 �
 
 제가 실제로 사용해 본 오프로딩 용량은 최대 100GB입니다. RAM이 512GB 있다고 해서 전부 할당하지는 않았어요. 아래는 설정 용량을 늘릴 때 얼마나 더 많은 KV를 보관할 수 있는지 계산해 본 표입니다.
 
-Qwen2.5-32B의 64개 레이어, KV Head 8개, Head Dimension 128 기준으로 BF16 KV는 토큰당 256 KiB, FP8 KV는 128 KiB입니다. 계산 편의를 위해 아래는 GiB 단위로 비교합니다. 제가 말한 최대 100GB의 실제 설정 단위와 런타임 메모리 사용량은 별도로 측정하지 않았습니다.
+Qwen3.8-27B는 64개 레이어 중 16개가 Full Attention, 48개가 Gated DeltaNet인 Hybrid 모델입니다. [공식 config.json](https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/config.json)의 KV Head 4개, Head Dimension 256을 적용하면 Full Attention KV만 BF16에서 토큰당 64 KiB(2 × 16 × 4 × 256 × 2 bytes), FP8에서 32 KiB입니다. Gated DeltaNet의 recurrent state와 convolution state는 별도로 관리되며 일반 KV와 같은 방식으로 길이에 비례하지 않습니다. 계산 편의를 위해 아래는 GiB 단위로 비교합니다. 실제 최대 100GB의 설정 단위와 런타임 사용량은 별도로 측정하지 않았습니다.
 
 | CPU KV 버퍼 | BF16 KV 토큰 슬롯 | FP8 KV 토큰 슬롯 | 32K(32,768토큰) 캐시 상당량 BF16 / FP8 |
 | ---: | ---: | ---: | ---: |
 | 0 GiB | 0 | 0 | 0 / 0 |
-| 16 GiB | 65,536 | 131,072 | 2 / 4 |
-| 32 GiB | 131,072 | 262,144 | 4 / 8 |
-| 64 GiB | 262,144 | 524,288 | 8 / 16 |
-| 100 GiB | 409,600 | 819,200 | 12.5 / 25 |
+| 16 GiB | 262,144 | 524,288 | 8 / 16 |
+| 32 GiB | 524,288 | 1,048,576 | 16 / 32 |
+| 64 GiB | 1,048,576 | 2,097,152 | 32 / 64 |
+| 100 GiB | 1,638,400 | 3,276,800 | 50 / 100 |
 
-이건 CPU에 저장할 수 있는 캐시의 이론적인 총량입니다. 동시에 처리할 수 있는 요청 수나 단일 요청의 최대 컨텍스트가 아니에요. 블록 단위 할당과 Scale, 메타데이터 등의 오버헤드도 제외했습니다. 실제로 16, 32, 64 GiB 각각을 테스트해 속도를 측정했다는 의미도 아닙니다.
+이건 Full Attention KV만 대상으로 계산한 CPU 버퍼의 이론적인 총량입니다. Gated DeltaNet state, MTP, 하이브리드 캐시 블록 배치와 오프로딩 백엔드 지원 여부는 별도로 고려해야 합니다. 동시에 처리할 수 있는 요청 수나 단일 요청의 최대 컨텍스트가 아니에요. 블록 단위 할당과 Scale, 메타데이터 등의 오버헤드도 제외했습니다. 실제로 16, 32, 64 GiB 각각을 테스트해 속도를 측정했다는 의미도 아닙니다.
 
 A6000의 GPU 메모리 대역폭은 768 GB/s이고 PCIe 4.0 x16의 이론적인 단방향 대역폭은 약 31.5 GB/s입니다. 예를 들어 8 GiB 캐시를 CPU에서 GPU로 한 번 전송한다면 이상적인 조건에서도 약 0.27초가 걸립니다. 실제 전송은 시스템 구성과 NUMA, pinned memory, 전송 중첩 등에 따라 달라져요.
 
