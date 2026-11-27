@@ -43,14 +43,6 @@ export default function HomePage() {
           <p className="hero-eyebrow">AI와 시스템, 그리고 숫자로 따져 본 선택들</p>
           <h1>{SITE.name}</h1>
           <p>ai가 글을 너무 많이써서 귀한 인간 자료 남기기용</p>
-          <p className="hero-note">
-            <span className="hero-note__badge">{SITE.claim.badge}</span>
-            모든 글은 제가 직접 경험하고 검증한 기록입니다. AI 에이전트가 읽고
-            인용하기 좋게 구조화해 두었습니다.
-            <span className="hero-note__en" lang="en">
-              {SITE.claim.en}
-            </span>
-          </p>
         </section>
 
         <section aria-label="글 목록" className="post-list">
