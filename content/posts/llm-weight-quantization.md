@@ -29,11 +29,20 @@ FP16에서 INT4로 바꾸면 Weight만 놓고 봤을 때 105 GB를 줄이는 셈
 
 ## 실제 Qwen 체크포인트를 A6000에서 비교하면?
 
-70B 이론값만 보면 실제 모델 파일이 얼마나 큰지 감이 잘 안 와요. 공식 Qwen2.5-32B-Instruct의 Hugging Face safetensors 파일을 비교하면 BF16은 약 65.5GB, [GPTQ-Int8](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int8/tree/main)은 약 35.1GB, [GPTQ-Int4](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4/tree/main)와 [AWQ](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-AWQ/tree/main)는 약 19.3GB입니다. [BF16 원본](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/tree/main)과 비교하면 INT4 파일 크기는 약 71% 줄어들어요. 이 값은 파일 크기이며 실제 VRAM이나 실측 성능은 아닙니다.
+70B 이론값만 보면 실제 모델 파일이 얼마나 큰지 감이 잘 안 와요. 그래서 Qwen3.8-27B를 기준으로 비교했습니다.
 
-RTX A6000 48GB(Ampere, SM 8.6) 한 장 기준으로 보면 원본은 Weight만으로 용량을 넘지만 INT4는 KV Cache를 위한 여유 공간을 확보하기 좋습니다. A6000에서는 FP8, NVFP4 네이티브 Tensor Core 연산이 지원되지 않으므로 해당 형식이 로딩된다고 해서 네이티브 저정밀 연산을 하는 것은 아닙니다. AWQ/GPTQ 및 Marlin 등 지원 커널과 vLLM 버전을 확인해야 합니다.
+| 모델 | Weight 형식 | 공개 파일 용량(약 GB) | A6000 48GB 한 장 |
+| --- | --- | ---: | --- |
+| [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) | BF16 | 55.6 | Weight만으로도 초과 |
+| [Qwen3.8-27B-FP8](https://huggingface.co/Qwen/Qwen3.8-27B-FP8) | FP8 | 30.9 | 로딩 여지 있음, 커널 확인 |
+| [derikn/Qwen3.8-27B-AWQ-INT4](https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4) | INT4 W4A16 | 19.6 | KV 공간 확보에 유리, 호환성 확인 |
+| [nvidia/Qwen3.8-27B-NVFP4](https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4) | 혼합 NVFP4/FP8 | 21.9 | 네이티브 FP4 미지원, 실행 가능 여부 별도 확인 |
 
-제 서버의 Host RAM은 512GB이고 오프로딩은 최대 100GB까지 사용해 봤습니다. 체크포인트 비교와 캐시 용량별 계산, GPU 세대별 제약은 [LLM 서빙 글](../llm-kv-cache-offloading/)에 따로 정리했어요. 위 모델들을 모두 직접 실행해 본 비교는 아닙니다.
+BF16과 FP8은 Qwen 공식 배포본이고 AWQ와 NVFP4는 각각 외부 개발자와 NVIDIA의 양자화 배포본입니다. 파일 용량은 공개 자료의 근삿값으로, [AWQ 모델 카드](https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4/blob/main/README.md)와 [Hugging Face 비교 기록](https://huggingface.co/Qwen/Qwen3.8-27B/discussions/192), [INT4 비교 자료](https://huggingface.co/TelperionAI/Qwen3.8-27B-INT4-AWQ-GPTQ)를 참고했습니다. 원본은 약 55.6GB로 보고되어 있습니다. 전체 파일 목록을 직접 합산하는 조회는 완료하지 못했으므로 정확한 다운로드 크기는 각 저장소의 Files 탭에서 확인하세요. 실제 VRAM과 실측 tok/s는 아닙니다. FP16과 BF16은 둘 다 2 bytes를 사용합니다.
+
+BF16 대비 AWQ 공개 파일 크기는 약 65% 작습니다(1 - 19.6 / 55.6). A6000 48GB(Ampere, SM 8.6)는 FP8이나 NVFP4 네이티브 연산을 지원하지 않으므로 Weight 형식과 실제 실행 커널을 따로 확인해야 합니다. 특히 NVIDIA의 혼합 NVFP4/FP8 체크포인트가 A6000에서 그대로 실행된다고 보장할 수는 없어요.
+
+제 서버의 Host RAM은 512GB이고 오프로딩은 최대 100GB까지 사용해 봤습니다. Qwen3.8의 Hybrid Attention 구조와 캐시 용량별 계산은 [LLM 서빙 글](../llm-kv-cache-offloading/)에 정리했습니다. 위 모델들을 모두 직접 실행해 본 비교는 아닙니다.
 
 ## 양자화하면 컨텍스트도 길어질까?
 
