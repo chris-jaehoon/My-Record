@@ -55,6 +55,27 @@ A6000은 Ampere 기반으로 FP16/BF16, INT8/INT4 Tensor Core 연산을 지원�
 
 같은 4비트라도 저장 형식과 실제 연산 정밀도가 다릅니다. A6000이라면 AWQ/GPTQ와 Marlin 같은 지원 커널부터 확인하는 게 좋겠어요. [NVIDIA RTX A6000 사양](https://www.nvidia.com/en-us/products/workstations/rtx-a6000/)과 [vLLM 양자화 호환표](https://docs.vllm.ai/en/stable/features/quantization/)를 참고했습니다.
 
+## A6000 48GB와 RTX PRO 4500 Blackwell 32GB는 뭐가 다를까?
+
+새 GPU라고 무조건 더 긴 Context를 쓸 수 있는 건 아니에요. RTX PRO 4500 Blackwell은 FP4를 하드웨어에서 처리할 수 있지만 VRAM은 A6000보다 16GB 적습니다.
+
+| 항목 | RTX A6000 | RTX PRO 4500 Blackwell |
+| --- | --- | --- |
+| 아키텍처 | Ampere (SM 8.6) | Blackwell (SM 12.0) |
+| VRAM | 48GB GDDR6 | 32GB GDDR7 |
+| Tensor Core | 3세대 | 5세대 |
+| FP8 / FP4 네이티브 | 미지원 | 지원 |
+| PCIe | Gen4 x16 | Gen5 x16 |
+| 이론 단방향 PCIe 대역폭 | 약 31.5 GB/s | 약 63 GB/s |
+
+같은 NVFP4 체크포인트라도 A6000에서는 지원되는 Weight-only 커널이 낮은 정밀도로 저장한 값을 복원해 연산하는 방식이 필요할 수 있습니다. Blackwell에서는 지원되는 W4A4 커널로 FP4 연산을 직접 가속할 수 있어요. 모델별 커널과 vLLM 버전에 따라 실제 실행 경로는 달라집니다.
+
+예를 들어 약 21.9GB NVFP4 체크포인트를 단순히 빼 보면 48GB에서는 26.1GB, 32GB에서는 10.1GB가 남습니다. 이건 파일 용량과 명목 VRAM을 단순 비교한 예시일 뿐 실제 KV 할당량은 아니에요. CUDA 작업 공간, Scale, 비양자화 레이어 및 단위 차이도 고려해야 합니다.
+
+PCIe Gen5 x16이 실제로 협상되는 시스템이라면 8 GiB 전송의 이론 하한도 약 0.27초에서 0.14초로 줄어듭니다. 다만 이것이 곧 tok/s가 두 배가 된다는 뜻은 아닙니다. 제가 사용한 Host RAM 512GB와 최대 100GB 오프로딩은 실제 경험이고, 두 GPU 간 성능 비교는 사양에 따른 분석이지 실측 결과가 아닙니다.
+
+참고: [RTX PRO 4500 Blackwell 공식 사양](https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-4500/), [RTX A6000 공식 사양](https://www.nvidia.com/en-us/products/workstations/rtx-a6000/).
+
 ## Prefill과 Decode를 따로 봐야 하는 이유
 
 긴 문서를 처음 넣으면 입력 토큰들을 처리해서 KV Cache를 만드는 Prefill 단계가 먼저 진행됩니다. 이후 답변을 한 토큰씩 만드는 Decode 단계가 이어져요. 보통 긴 입력의 Prefill은 연산량 부담이 커지고, 작은 배치의 Decode는 Weight와 캐시를 읽는 메모리 대역폭이 병목이 되기 쉽습니다. 실제 병목은 배치와 모델에 따라 달라지고요.
