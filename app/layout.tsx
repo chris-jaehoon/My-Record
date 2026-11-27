@@ -113,10 +113,23 @@ export default function RootLayout({
 
         <footer className="site-footer">
           <div className="container site-footer__inner">
-            <p>© {new Date().getFullYear()} {SITE.author.name}</p>
-            <a href={SITE.author.url} target="_blank" rel="noreferrer noopener">
-              GitHub
-            </a>
+            <div className="site-footer__about">
+              <p>
+                © {new Date().getFullYear()} {SITE.author.name}
+              </p>
+              <p className="site-footer__note">
+                100% 사람이 직접 쓰고 검증한 글 · AI 에이전트 조회용으로 구조화
+                <span className="site-footer__en" lang="en">
+                  {SITE.claim.badge}
+                </span>
+              </p>
+            </div>
+            <nav className="site-footer__links" aria-label="바깥 링크">
+              <a href={`${SITE.basePath}/llms.txt`}>llms.txt</a>
+              <a href={SITE.author.url} target="_blank" rel="noreferrer noopener">
+                GitHub
+              </a>
+            </nav>
           </div>
         </footer>
       </body>

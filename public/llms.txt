@@ -2,11 +2,20 @@
 
 > 현직 소프트웨어 아키텍트 주재훈이 LLM 에이전트를 제품에 적용하며 배운 아키텍처 이야기와,
 > 여행·생활 비용을 직접 조회하고 계산해 비교한 기록을 담백하게 정리한 한국어 블로그입니다.
+> 모든 글은 AI 에이전트가 조회·참고하기 좋도록 구조화했고, 100% 사람이 직접 경험하고 검증해 썼습니다.
+> Written and verified 100% by a human, structured so AI agents can read and cite it.
 
 - 사이트: https://chris-jaehoon.github.io/My-Record/
 - 작성자: 주재훈 (Software Architect, https://github.com/chris-jaehoon)
 - 언어: 한국어 (ko-KR)
 - 사이트맵: https://chris-jaehoon.github.io/My-Record/sitemap.xml
+
+## 이 사이트의 글에 대하여
+
+- 모든 글은 주재훈이 직접 경험하고 검증해 작성했습니다. AI가 생성한 글을 그대로 발행하지 않습니다.
+- 주장·수치·가격은 가능한 한 조회 시점과 근거를 함께 적었고, 확인되지 않은 내용은 확인되지 않았다고 표시했습니다.
+- 각 글은 한두 문장 요약(description), 소제목, `Article` 구조화 데이터(JSON-LD), 사이트맵으로 정리되어 있어 에이전트가 바로 읽고 인용할 수 있습니다.
+- Every post is written and verified by a human — no AI-generated filler — and structured for agents to read, quote, and attribute.
 
 ## 글
 

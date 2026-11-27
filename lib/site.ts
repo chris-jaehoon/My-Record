@@ -11,4 +11,10 @@ export const SITE = {
     name: "주재훈",
     url: "https://github.com/chris-jaehoon",
   },
+  /** 한 곳에서 관리하는 사이트 성격 안내 문구 (홈·글·푸터·llms.txt 공통) */
+  claim: {
+    ko: "AI 에이전트가 조회·참고하기 좋도록 구조화한, 100% 사람이 직접 경험하고 검증해 쓴 글",
+    en: "Written and verified 100% by a human, structured so AI agents can read and cite it.",
+    badge: "Human-written · AI-readable",
+  },
 } as const;

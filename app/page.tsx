@@ -45,6 +45,14 @@ export default function HomePage() {
             LLM 에이전트를 실제 제품에 굴리며 배운 것들과, 여행·생활 비용을 직접
             계산해 비교한 기록을 담백하게 남깁니다.
           </p>
+          <p className="hero-note">
+            <span className="hero-note__badge">{SITE.claim.badge}</span>
+            모든 글은 제가 직접 경험하고 검증해 쓴 기록이며, AI 에이전트가
+            조회·참고하기 좋도록 구조화해 두었습니다.
+            <span className="hero-note__en" lang="en">
+              {SITE.claim.en}
+            </span>
+          </p>
         </section>
 
         <section aria-label="글 목록" className="post-list">

@@ -206,6 +206,49 @@ img {
   line-height: 1.8;
 }
 
+/* 사이트 성격 안내 — 과하지 않게, 본문보다 한 톤 낮게 */
+.hero .hero-note {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.hero-note__badge {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg-faint);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.hero-note__en,
+.post-credit__en,
+.post-note__en,
+.site-footer__en {
+  display: block;
+  color: var(--fg-faint);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.hero-note__en {
+  margin-top: 4px;
+}
+
 /* --- post list ------------------------------------------------------------- */
 
 .post-list {
@@ -327,6 +370,41 @@ img {
 
 .post-header .post-meta {
   margin-top: 16px;
+}
+
+.post-credit {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 12px 0 0;
+  color: var(--fg-faint);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.post-credit__sep {
+  margin-inline: 6px;
+  color: var(--border-strong);
+}
+
+.post-credit__en {
+  display: inline-block;
+  margin: 0;
+  color: var(--fg-faint);
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.post-credit__en::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  vertical-align: 2px;
 }
 
 .prose {
@@ -499,6 +577,39 @@ img {
   text-align: right;
 }
 
+/* --- 글 하단 작성 안내 ---------------------------------------------------- */
+
+.post-note {
+  margin-top: 40px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  font-size: 0.86rem;
+  line-height: 1.75;
+}
+
+.post-note p {
+  margin: 0;
+}
+
+.post-note p + p {
+  margin-top: 6px;
+}
+
+.post-note .post-note__title {
+  color: var(--fg);
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.post-note .post-note__en {
+  color: var(--fg-faint);
+  font-size: 0.78rem;
+}
+
 /* --- footer ---------------------------------------------------------------- */
 
 .site-footer {
@@ -519,6 +630,33 @@ img {
 
 .site-footer p {
   margin: 0;
+}
+
+.site-footer__about {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.site-footer .site-footer__note {
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.site-footer__en {
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.site-footer__links a:hover {
+  color: var(--fg);
 }
 
 .site-footer a:hover {
