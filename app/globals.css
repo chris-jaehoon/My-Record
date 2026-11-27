@@ -338,12 +338,13 @@ img {
   overflow-wrap: break-word;
 }
 
-.prose > * + * {
-  margin-top: 1.2em;
-}
-
+/* 브라우저 기본 여백을 먼저 지우고(우선순위 0), 그 위에 문단 리듬을 얹습니다. */
 .prose :where(p, ul, ol, blockquote, pre, h2, h3, hr) {
   margin-block: 0;
+}
+
+.prose > * + * {
+  margin-top: 1.2em;
 }
 
 .prose h2 {
@@ -370,7 +371,6 @@ img {
 
 .prose ul,
 .prose ol {
-  margin: 0;
   padding-left: 1.3em;
 }
 
@@ -388,7 +388,6 @@ img {
 }
 
 .prose blockquote {
-  margin: 0;
   padding: 2px 0 2px 16px;
   border-left: 3px solid var(--border-strong);
   color: var(--fg-muted);
@@ -414,7 +413,6 @@ img {
 }
 
 .prose pre {
-  margin: 0;
   padding: 16px 18px;
   border: 1px solid var(--border);
   border-radius: 10px;
