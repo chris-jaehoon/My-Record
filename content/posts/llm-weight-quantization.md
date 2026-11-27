@@ -44,6 +44,8 @@ BF16 대비 AWQ 공개 파일 크기는 약 65% 작습니다(1 - 19.6 / 55.6). A
 
 제 서버의 Host RAM은 512GB이고 오프로딩은 최대 100GB까지 사용해 봤습니다. Qwen3.8의 Hybrid Attention 구조와 캐시 용량별 계산은 [LLM 서빙 글](../llm-kv-cache-offloading/)에 정리했습니다. 위 모델들을 모두 직접 실행해 본 비교는 아닙니다.
 
+RTX PRO 4500 Blackwell은 32GB GDDR7과 5세대 Tensor Core를 갖추고 FP8, FP4 네이티브 연산을 지원합니다. A6000의 48GB보다 VRAM은 적지만 지원되는 NVFP4 W4A4 커널을 쓰면 정밀도 변환에 의존하는 경로와 다른 연산 성능을 기대할 수 있어요. 반대로 긴 입력과 동시 요청을 위한 KV 공간은 A6000이 유리할 수 있습니다. 두 GPU의 실제 tok/s를 직접 비교한 결과는 아닙니다. [NVIDIA 공식 사양](https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-4500/)과 [서빙 글](../llm-kv-cache-offloading/)에 정리한 비교를 참고하세요.
+
 ## 양자화하면 컨텍스트도 길어질까?
 
 Weight 양자화로 확보한 VRAM을 KV Cache에 쓸 수 있으니, 메모리 때문에 길이를 제한하고 있었다면 도움이 됩니다. 근데 Weight를 INT4로 바꾼다고 KV Cache까지 자동으로 INT4가 되는 건 아니더라고요.
