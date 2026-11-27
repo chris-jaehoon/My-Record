@@ -1,0 +1,4 @@
+# Google AdSense — ads.txt
+#
+# 아래 한 줄이 그대로 서빙됩니다: https://chris-jaehoon.github.io/My-Record/ads.txt
+google.com, pub-4278170914101108, DIRECT, f08c47fec0942fa0

@@ -1,0 +1,353 @@
+1:"$Sreact.fragment"
+2:"/My-Record/_next/static/chunks/08mika-44sn50.js"
+3:"/My-Record/_next/static/chunks/2t1-r-_tfywnv.js"
+4:"/My-Record/_next/static/chunks/20-v9fcr2wb2e.js"
+5:I[22016,["$2","$3","$4"],""]
+6:I[62474,["$2","$3"],"default"]
+7:I[39756,["$2","$3"],"default"]
+8:I[37457,["$2","$3"],"default"]
+e:I[97367,["$2","$3"],"OutletBoundary"]
+f:"$Sreact.suspense"
+11:"ViewportBoundary"
+12:I[97367,["$2","$3"],"$11"]
+14:"MetadataBoundary"
+15:I[97367,["$2","$3"],"$14"]
+17:I[68027,["$2","$3"],"default",1]
+:HL["/My-Record/_next/static/chunks/0sjgoizb9kk2d.css","style"]
+a:X
+c:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$Ld",[["$","script","script-0",{"src":"/My-Record/_next/static/chunks/20-v9fcr2wb2e.js","async":true,"nonce":"$undefined"}]],["$","$Le",null,{"children":["$","$f",null,{"name":"Next.MetadataOutlet","children":"$@10"}]}]]}],"p":false,"v":null}}]]
+b:[["children",{"s":{"n":"slug","t":"d","k":"llm-kv-cache-offloading","s":[]},"h":66048,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$a"},"c":"$Qc"}]]
+9:[["children",{"s":"posts","h":131584,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$a"},"c":"$Qb"}]]
+0:{"P":null,"c":["","posts","llm-kv-cache-offloading",""],"q":"","i":false,"t":{"t":{"s":"","h":131600,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/My-Record/_next/static/chunks/0sjgoizb9kk2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/My-Record/_next/static/chunks/08mika-44sn50.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/My-Record/_next/static/chunks/2t1-r-_tfywnv.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","suppressHydrationWarning":true,"children":["$","body",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var t=localStorage.getItem(\"theme\");if(t===\"dark\"||t===\"light\"){document.documentElement.dataset.theme=t;}}catch(e){}})();"}}],["$","script",null,{"async":true,"crossOrigin":"anonymous","src":"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4278170914101108"}],["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"container site-header__inner","children":[["$","$L5",null,{"href":"/","className":"site-title","children":"이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그"}],["$","$L6",null,{}]]}]}],["$","main",null,{"className":"site-main","children":["$","$L7",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"container","children":["$","div",null,{"className":"not-found","children":[["$","h1",null,{"children":"페이지를 찾을 수 없습니다"}],["$","p",null,{"children":"주소가 바뀌었거나 삭제된 글일 수 있어요."}],["$","$L5",null,{"href":"/","children":"글 목록으로 돌아가기"}]]}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"site-footer","children":["$","div",null,{"className":"container site-footer__inner","children":[["$","div",null,{"className":"site-footer__about","children":["$","p",null,{"children":["© ",2026," ","주재훈"]}]}],["$","nav",null,{"className":"site-footer__links","aria-label":"바깥 링크","children":[["$","a",null,{"href":"/My-Record/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"https://github.com/chris-jaehoon","target":"_blank","rel":"noreferrer noopener","children":"GitHub"}]]}]]}]}]]}]}]]}],"p":false,"v":null},"c":"$Q9"},"h":{"r":["$","$1","h",{"children":[null,["$","$L12",null,{"children":"$L13"}],["$","$L15",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$f",null,{"name":"Next.Metadata","children":"$L16"}]}],null]}],null]}],"p":false,"v":null}},"m":"$undefined","G":["$17",[["$","link","0",{"rel":"stylesheet","href":"/My-Record/_next/static/chunks/0sjgoizb9kk2d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"zTG1iiuVOhu4f_HdQ7jdH"}
+19:I[6368,["$2","$3","$4"],"default"]
+a:C
+18:T520,{"@context":"https://schema.org","@type":"Article","@id":"https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/","headline":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지","description":"2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen3.8 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다.","inLanguage":"ko-KR","datePublished":"2026-11-28T09:00:00+09:00","dateModified":"2026-11-28T09:00:00+09:00","articleSection":"AI, SW 아키텍처","keywords":"LLM, KV Cache, vLLM, GPU","image":["https://chris-jaehoon.github.io/My-Record/og.png"],"author":{"@type":"Person","name":"주재훈","url":"https://github.com/chris-jaehoon"},"publisher":{"@type":"Organization","name":"이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그","url":"https://chris-jaehoon.github.io/My-Record/"},"isPartOf":{"@type":"WebSite","@id":"https://chris-jaehoon.github.io/My-Record/#website","name":"이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그","url":"https://chris-jaehoon.github.io/My-Record/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/"},"url":"https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/"}1a:T4e4c,<p>요즘 LLM을 직접 서빙하면서 Weight 양자화와 KV Cache Offloading을 같이 쓰고 있어요. GPU 메모리가 부족하면 일반 RAM을 더 붙여서 해결하면 되지 않을까 싶은데, 막상 따져보니 RAM을 늘리는 것과 VRAM을 늘리는 건 기대할 수 있는 효과가 좀 다르더라고요.</p>
+<p>저는 vLLM으로 모델을 띄워 RAG와 Multi-Agent 시스템에서 쓰고 있어요. 에이전트 하나가 여러 번 모델을 호출하다 보니 사용자 수만으로 서버 부하를 계산하기도 어렵습니다. 현재 Weight와 KV Cache 양자화, Host RAM을 이용한 KV Cache Offloading을 사용하고 있습니다.</p>
+<p>특히 여러 사람이 동시에 모델을 쓰는 경우와 한 사람이 아주 긴 문서를 넣는 경우를 구분해서 봐야 합니다. 모델을 고르는 단계부터 이 차이를 생각해야 하더라고요.</p>
+<h2>Dense와 MoE, 파라미터 수만 보고 고르면 안 된다</h2>
+<p>Dense 모델은 일반적으로 각 토큰을 처리할 때 모든 레이어의 해당 Weight를 사용합니다. MoE(Mixture of Experts)는 일부 FFN을 여러 Expert로 나누고 Router가 토큰마다 사용할 Expert를 고르는 구조예요.</p>
+<p>예를 들어 전체 100B 중 토큰당 10B가 활성화되는 가상의 MoE 모델이라면, 10B Dense 모델과 비슷한 크기의 연산을 한다고 단순하게 생각하기 쉽습니다. 하지만 전체 Weight를 GPU에 상주시킨다면 100B에 해당하는 저장 공간이 필요해요. Attention과 공유 레이어의 연산, Expert 선택 및 통신 비용도 따로 고려해야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th>비교 항목</th>
+<th>Dense</th>
+<th>MoE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Weight 메모리</td>
+<td>전체 파라미터 기준</td>
+<td>전체 Expert 포함 파라미터 기준</td>
+</tr>
+<tr>
+<td>토큰당 연산</td>
+<td>대부분의 Weight 사용</td>
+<td>선택된 Expert와 공유 레이어 사용</td>
+</tr>
+<tr>
+<td>여러 GPU 사용</td>
+<td>TP, PP 등</td>
+<td>TP, PP, EP 등</td>
+</tr>
+<tr>
+<td>추가 병목</td>
+<td>GPU 간 통신</td>
+<td>Expert 쏠림과 토큰 전송</td>
+</tr>
+</tbody></table>
+<p>실제 Qwen3.8 계열에도 <a href="https://huggingface.co/Qwen/Qwen3.8-27B">Dense 27B</a>와 <a href="https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B">MoE 2.4T-A95B</a>가 있습니다. 후자는 전체 2.4조 파라미터 중 약 950억 개가 활성화되는 모델이라 A6000 한 장과 Host RAM 512GB만으로 전체 Weight를 올리는 것은 현실적이지 않습니다. 4비트 이론값만 약 1.2TB입니다.</p>
+<p>MoE라고 KV Cache까지 활성 파라미터 비율만큼 작아지는 건 아닙니다. 캐시는 Attention 구조에 따라 따로 계산해야 해요. Expert Parallelism(EP)으로 Expert를 여러 GPU에 나눌 수도 있지만 GPU 간 통신 속도와 부하 균형이 중요합니다. 이 부분은 제가 직접 EP를 운영해 얻은 실측 결과가 아니라 모델 선택 시 고려할 구조적인 차이입니다.</p>
+<h2>A6000 48GB 한 장으로 Qwen을 띄운다면?</h2>
+<p>제가 사용하는 서버에는 Host RAM이 512GB 있고, 오프로딩은 최대 100GB까지 해봤어요. 512GB 전부를 GPU 메모리처럼 쓰는 건 아닙니다. 아래는 RTX A6000(Ampere, SM 8.6) 한 장을 기준으로 비교한 내용이고, 실제 GPU 장수나 모든 체크포인트를 직접 구동했다는 뜻은 아니에요.</p>
+<p>Qwen3.8-27B를 기준으로 정밀도별 공개 체크포인트를 비교해 봤습니다. 실제 로딩에는 CUDA 작업 공간과 KV Cache도 들어갑니다.</p>
+<table>
+<thead>
+<tr>
+<th>모델</th>
+<th>Weight 형식</th>
+<th align="right">공개 파일 용량(약 GB)</th>
+<th>A6000 48GB 한 장</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://huggingface.co/Qwen/Qwen3.8-27B">Qwen3.8-27B</a></td>
+<td>BF16</td>
+<td align="right">55.6</td>
+<td>Weight만으로도 초과</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8">Qwen3.8-27B-FP8</a></td>
+<td>FP8</td>
+<td align="right">30.9</td>
+<td>로딩 여지 있음, 커널 확인</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4">derikn/Qwen3.8-27B-AWQ-INT4</a></td>
+<td>INT4 W4A16</td>
+<td align="right">19.6</td>
+<td>KV 공간 확보에 유리, 호환성 확인</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/nvidia/Qwen3.8-27B-NVFP4">nvidia/Qwen3.8-27B-NVFP4</a></td>
+<td>혼합 NVFP4/FP8</td>
+<td align="right">21.9</td>
+<td>네이티브 FP4 미지원, 실행 가능 여부 별도 확인</td>
+</tr>
+</tbody></table>
+<p>BF16과 FP8은 Qwen 공식 배포본이고 AWQ와 NVFP4는 각각 외부 개발자와 NVIDIA의 양자화 배포본입니다. 파일 용량은 공개 자료의 근삿값으로, <a href="https://huggingface.co/derikn/Qwen3.8-27B-AWQ-INT4/blob/main/README.md">AWQ 모델 카드</a>와 <a href="https://huggingface.co/Qwen/Qwen3.8-27B/discussions/192">Hugging Face 비교 기록</a>, <a href="https://huggingface.co/TelperionAI/Qwen3.8-27B-INT4-AWQ-GPTQ">INT4 비교 자료</a>를 참고했습니다. 원본은 약 55.6GB로 보고되어 있습니다. 전체 파일 목록을 직접 합산하는 조회는 완료하지 못했으므로 정확한 다운로드 크기는 각 저장소의 Files 탭에서 확인하세요. 실제 VRAM과 실측 tok/s는 아닙니다. FP16과 BF16은 둘 다 2 bytes를 사용합니다.</p>
+<p>A6000은 Ampere 기반으로 FP16/BF16, INT8/INT4 Tensor Core 연산을 지원하지만 FP8이나 NVFP4 네이티브 Tensor Core 연산은 지원하지 않아요. FP8 또는 NVFP4 체크포인트도 엔진과 버전에 따라 Weight를 복원해서 계산하는 커널로 실행할 수 있지만, 최신 GPU와 동일한 저정밀 연산 속도를 기대하면 안 됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>GPU 세대</th>
+<th>저정밀 연산에서 확인할 점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ampere (RTX A6000)</td>
+<td>AWQ/GPTQ W4A16 등 지원 커널, FP8/FP4 네이티브 연산 없음</td>
+</tr>
+<tr>
+<td>Ada (RTX 6000 Ada)</td>
+<td>FP8 Tensor Core 지원, NVFP4 네이티브 연산 없음</td>
+</tr>
+<tr>
+<td>Hopper (H100)</td>
+<td>FP8 Tensor Core 지원, NVFP4 네이티브 연산 없음</td>
+</tr>
+<tr>
+<td>Blackwell</td>
+<td>FP8 및 NVFP4 네이티브 연산 지원, 엔진과 커널 확인 필요</td>
+</tr>
+</tbody></table>
+<p>같은 4비트라도 저장 형식과 실제 연산 정밀도가 다릅니다. A6000이라면 AWQ/GPTQ와 Marlin 같은 지원 커널부터 확인하는 게 좋겠어요. <a href="https://www.nvidia.com/en-us/products/workstations/rtx-a6000/">NVIDIA RTX A6000 사양</a>과 <a href="https://docs.vllm.ai/en/stable/features/quantization/">vLLM 양자화 호환표</a>를 참고했습니다.</p>
+<h2>A6000 48GB와 RTX PRO 4500 Blackwell 32GB는 뭐가 다를까?</h2>
+<p>새 GPU라고 무조건 더 긴 Context를 쓸 수 있는 건 아니에요. RTX PRO 4500 Blackwell은 FP4를 하드웨어에서 처리할 수 있지만 VRAM은 A6000보다 16GB 적습니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>RTX A6000</th>
+<th>RTX PRO 4500 Blackwell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>아키텍처</td>
+<td>Ampere (SM 8.6)</td>
+<td>Blackwell (SM 12.0)</td>
+</tr>
+<tr>
+<td>VRAM</td>
+<td>48GB GDDR6</td>
+<td>32GB GDDR7</td>
+</tr>
+<tr>
+<td>Tensor Core</td>
+<td>3세대</td>
+<td>5세대</td>
+</tr>
+<tr>
+<td>FP8 / FP4 네이티브</td>
+<td>미지원</td>
+<td>지원</td>
+</tr>
+<tr>
+<td>PCIe</td>
+<td>Gen4 x16</td>
+<td>Gen5 x16</td>
+</tr>
+<tr>
+<td>이론 단방향 PCIe 대역폭</td>
+<td>약 31.5 GB/s</td>
+<td>약 63 GB/s</td>
+</tr>
+</tbody></table>
+<p>같은 NVFP4 체크포인트라도 A6000에서는 지원되는 Weight-only 커널이 낮은 정밀도로 저장한 값을 복원해 연산하는 방식이 필요할 수 있습니다. Blackwell에서는 지원되는 W4A4 커널로 FP4 연산을 직접 가속할 수 있어요. 모델별 커널과 vLLM 버전에 따라 실제 실행 경로는 달라집니다.</p>
+<p>예를 들어 약 21.9GB NVFP4 체크포인트를 단순히 빼 보면 48GB에서는 26.1GB, 32GB에서는 10.1GB가 남습니다. 이건 파일 용량과 명목 VRAM을 단순 비교한 예시일 뿐 실제 KV 할당량은 아니에요. CUDA 작업 공간, Scale, 비양자화 레이어 및 단위 차이도 고려해야 합니다.</p>
+<p>PCIe Gen5 x16이 실제로 협상되는 시스템이라면 8 GiB 전송의 이론 하한도 약 0.27초에서 0.14초로 줄어듭니다. 다만 이것이 곧 tok/s가 두 배가 된다는 뜻은 아닙니다. 제가 사용한 Host RAM 512GB와 최대 100GB 오프로딩은 실제 경험이고, 두 GPU 간 성능 비교는 사양에 따른 분석이지 실측 결과가 아닙니다.</p>
+<p>참고: <a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-4500/">RTX PRO 4500 Blackwell 공식 사양</a>, <a href="https://www.nvidia.com/en-us/products/workstations/rtx-a6000/">RTX A6000 공식 사양</a>.</p>
+<h2>Prefill과 Decode를 따로 봐야 하는 이유</h2>
+<p>긴 문서를 처음 넣으면 입력 토큰들을 처리해서 KV Cache를 만드는 Prefill 단계가 먼저 진행됩니다. 이후 답변을 한 토큰씩 만드는 Decode 단계가 이어져요. 보통 긴 입력의 Prefill은 연산량 부담이 커지고, 작은 배치의 Decode는 Weight와 캐시를 읽는 메모리 대역폭이 병목이 되기 쉽습니다. 실제 병목은 배치와 모델에 따라 달라지고요.</p>
+<p>RAG나 코드 분석은 입력이 길어지기 쉽고, 여러 Agent가 동시에 호출하면 Prefill과 Decode가 섞입니다. vLLM의 Continuous Batching은 진행 중인 요청 사이에 새 요청을 배치하고, Chunked Prefill은 긴 입력을 나눠 처리해 Decode와 자원을 공유하도록 돕습니다. 무작정 배치를 키우면 전체 처리량은 좋아져도 개별 응답은 느려질 수 있어요.</p>
+<h2>KV Cache는 대체 뭘 저장하는 걸까?</h2>
+<p>LLM이 답변을 한 토큰씩 생성할 때 앞에서 처리한 토큰의 Key와 Value를 저장해 두는 게 KV Cache예요. 다음 토큰을 생성할 때 앞의 Key와 Value를 매번 다시 계산하지 않아도 됩니다.</p>
+<p>문제는 입력과 출력 토큰이 늘어날수록 이 캐시도 커진다는 거예요. 모델의 Weight는 같은 모델을 띄워 놓으면 대체로 일정한데, KV Cache는 요청마다 필요한 양이 달라집니다.</p>
+<p>예를 들어 32개 레이어, KV Head 8개, Head Dimension 128인 모델에서 FP16으로 캐시를 저장한다고 가정해 볼게요.</p>
+<p>토큰당 KV Cache = 2(K와 V) × 32 × 8 × 128 × 2 bytes = 128 KiB</p>
+<table>
+<thead>
+<tr>
+<th>전체 토큰 수</th>
+<th align="right">KV Cache 크기</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8,192</td>
+<td align="right">1 GiB</td>
+</tr>
+<tr>
+<td>32,768</td>
+<td align="right">4 GiB</td>
+</tr>
+<tr>
+<td>131,072</td>
+<td align="right">16 GiB</td>
+</tr>
+</tbody></table>
+<p>실제 서빙 중인 모델의 측정값은 아니고, 위 조건으로 직접 계산한 예시입니다. Weight나 CUDA 작업 공간, 메모리 할당 오버헤드는 빠져 있어요. 같은 32K 요청이 네 개라면 공유되는 Prefix가 없다는 가정에서 캐시만 16 GiB가 필요합니다.</p>
+<h2>Host RAM에 캐시를 저장하면 되는 거 아닌가?</h2>
+<p>GPU에서 당장 쓰지 않는 캐시를 Host RAM으로 옮겨 두고, 다시 필요할 때 불러오는 방식이 있습니다. KV Cache Offloading이라고 해요.</p>
+<p>여기서 중요한 건 엔진이 어떤 방식으로 오프로딩하느냐입니다. 비활성 요청이나 재사용할 Prefix를 CPU에 보관하는 방식이라면 동시 요청 처리나 캐시 재사용에는 도움이 되지만, 한 요청의 최대 길이가 그대로 늘어나는 건 아니에요. 활성 KV까지 CPU로 넘겨 처리하는 구현이라면 메모리 제약을 더 완화할 수 있지만 전송 비용이 생깁니다.</p>
+<p>GPU가 계산하는 동안 CPU와 GPU가 PCIe로 데이터를 주고받아야 하니까요. 전송과 계산을 겹칠 수 있는 정도에 따라 실제 tok/s 손실도 달라집니다.</p>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th>주로 기대하는 효과</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPU VRAM 증설</td>
+<td>활성 KV Cache와 Weight를 더 많이 GPU에 유지</td>
+</tr>
+<tr>
+<td>Host RAM 증설</td>
+<td>엔진이 지원하는 CPU 캐시 보관 공간 확대</td>
+</tr>
+<tr>
+<td>Weight 양자화</td>
+<td>Weight가 차지하던 VRAM 확보</td>
+</tr>
+<tr>
+<td>KV Cache 양자화</td>
+<td>토큰당 캐시 메모리 감소</td>
+</tr>
+<tr>
+<td>Prefix Caching</td>
+<td>동일한 앞부분의 계산과 캐시 재사용</td>
+</tr>
+</tbody></table>
+<h2>Host RAM 512GB 중 최대 100GB까지 오프로딩</h2>
+<p>제가 실제로 사용해 본 오프로딩 용량은 최대 100GB입니다. RAM이 512GB 있다고 해서 전부 할당하지는 않았어요. 아래는 설정 용량을 늘릴 때 얼마나 더 많은 KV를 보관할 수 있는지 계산해 본 표입니다.</p>
+<p>Qwen3.8-27B는 64개 레이어 중 16개가 Full Attention, 48개가 Gated DeltaNet인 Hybrid 모델입니다. <a href="https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/config.json">공식 config.json</a>의 KV Head 4개, Head Dimension 256을 적용하면 Full Attention KV만 BF16에서 토큰당 64 KiB(2 × 16 × 4 × 256 × 2 bytes), FP8에서 32 KiB입니다. Gated DeltaNet의 recurrent state와 convolution state는 별도로 관리되며 일반 KV와 같은 방식으로 길이에 비례하지 않습니다. 계산 편의를 위해 아래는 GiB 단위로 비교합니다. 실제 최대 100GB의 설정 단위와 런타임 사용량은 별도로 측정하지 않았습니다.</p>
+<table>
+<thead>
+<tr>
+<th align="right">CPU KV 버퍼</th>
+<th align="right">BF16 KV 토큰 슬롯</th>
+<th align="right">FP8 KV 토큰 슬롯</th>
+<th align="right">32K(32,768토큰) 캐시 상당량 BF16 / FP8</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">0 GiB</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0 / 0</td>
+</tr>
+<tr>
+<td align="right">16 GiB</td>
+<td align="right">262,144</td>
+<td align="right">524,288</td>
+<td align="right">8 / 16</td>
+</tr>
+<tr>
+<td align="right">32 GiB</td>
+<td align="right">524,288</td>
+<td align="right">1,048,576</td>
+<td align="right">16 / 32</td>
+</tr>
+<tr>
+<td align="right">64 GiB</td>
+<td align="right">1,048,576</td>
+<td align="right">2,097,152</td>
+<td align="right">32 / 64</td>
+</tr>
+<tr>
+<td align="right">100 GiB</td>
+<td align="right">1,638,400</td>
+<td align="right">3,276,800</td>
+<td align="right">50 / 100</td>
+</tr>
+</tbody></table>
+<p>이건 Full Attention KV만 대상으로 계산한 CPU 버퍼의 이론적인 총량입니다. Gated DeltaNet state, MTP, 하이브리드 캐시 블록 배치와 오프로딩 백엔드 지원 여부는 별도로 고려해야 합니다. 동시에 처리할 수 있는 요청 수나 단일 요청의 최대 컨텍스트가 아니에요. 블록 단위 할당과 Scale, 메타데이터 등의 오버헤드도 제외했습니다. 실제로 16, 32, 64 GiB 각각을 테스트해 속도를 측정했다는 의미도 아닙니다.</p>
+<p>A6000의 GPU 메모리 대역폭은 768 GB/s이고 PCIe 4.0 x16의 이론적인 단방향 대역폭은 약 31.5 GB/s입니다. 예를 들어 8 GiB 캐시를 CPU에서 GPU로 한 번 전송한다면 이상적인 조건에서도 약 0.27초가 걸립니다. 실제 전송은 시스템 구성과 NUMA, pinned memory, 전송 중첩 등에 따라 달라져요.</p>
+<p>오프로딩 용량을 늘린다고 항상 tok/s가 떨어지는 건 아닙니다. CPU 캐시 Hit로 Prefill 재계산을 피하면 오히려 TTFT가 개선될 수 있고, 활성 데이터가 빈번하게 왕복하면 느려질 수 있어요. 용량 자체보다 재사용률과 실제 전송량이 중요합니다.</p>
+<p>vLLM에서 <code>--kv-offloading-size</code>는 KV CPU 버퍼의 GiB 단위 크기이고 TP 전체에 대한 합계입니다. 반면 <code>--cpu-offload-gb</code>는 GPU별 Weight 오프로딩 용량입니다. 둘을 같은 설정으로 보면 안 돼요. Weight를 CPU에 두는 경우 Forward마다 전송이 발생할 수 있어서 Decode 성능에 더 직접적인 영향을 줍니다. <a href="https://docs.vllm.ai/en/latest/configuration/engine_args/">vLLM 설정 문서</a> 기준이며 버전에 따라 지원 여부는 달라집니다.</p>
+<h2>그래서 컨텍스트를 더 길게 쓰려면?</h2>
+<p>우선 모델이 지원하는 길이와 서빙 엔진의 최대 길이 설정을 확인해야 해요. 메모리가 남는다고 모델의 학습 컨텍스트나 위치 인코딩 한계까지 자동으로 늘어나는 건 아닙니다.</p>
+<p>vLLM을 쓴다면 max_model_len, gpu_memory_utilization 같은 설정과 시작 로그에 나오는 KV Cache 용량을 같이 보는 편이 좋습니다. GPU 메모리만 볼 게 아니라 실제 요청 길이와 동시 요청 수도 같이 봐야 하고요.</p>
+<h2>GPU를 여러 장 쓰는 방법도 목적에 따라 다르다</h2>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>어떻게 나누는지</th>
+<th>고려할 점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tensor Parallelism (TP)</td>
+<td>한 레이어의 연산과 Weight 분할</td>
+<td>레이어마다 GPU 간 통신</td>
+</tr>
+<tr>
+<td>Pipeline Parallelism (PP)</td>
+<td>레이어를 GPU별로 분할</td>
+<td>단계 간 대기 및 통신</td>
+</tr>
+<tr>
+<td>Data Parallelism (DP)</td>
+<td>모델 복제 후 요청 분산</td>
+<td>복제본마다 Weight 메모리 필요</td>
+</tr>
+<tr>
+<td>Expert Parallelism (EP)</td>
+<td>MoE의 Expert 분산</td>
+<td>토큰 라우팅과 통신, 부하 균형</td>
+</tr>
+</tbody></table>
+<p>GPU 두 장의 VRAM을 단순히 더한 숫자가 한 장의 VRAM과 같은 건 아니에요. 특히 PCIe 연결인지 NVLink를 쓸 수 있는지에 따라 통신 비용이 달라집니다. GPU 병렬화는 여기서 직접 수행한 결과가 아니라 증설 시 비교할 선택지로 정리했습니다.</p>
+<h2>서빙할 때 제가 같이 보고 싶은 지표들</h2>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>확인하려는 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TTFT</td>
+<td>요청 후 첫 토큰까지 걸리는 시간</td>
+</tr>
+<tr>
+<td>TPOT</td>
+<td>첫 토큰 이후 토큰당 생성 시간</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>서버 전체가 초당 처리하는 토큰과 요청 수</td>
+</tr>
+<tr>
+<td>P95 응답 시간</td>
+<td>요청이 몰릴 때 느려지는 정도</td>
+</tr>
+<tr>
+<td>KV Cache 사용률과 Hit Rate</td>
+<td>메모리 부족 및 Prefix 재사용 효과</td>
+</tr>
+</tbody></table>
+<p>테스트할 때는 입력 길이, 출력 길이, 동시 요청 수를 맞춰야 합니다. Agent가 연쇄 호출을 하는 경우에는 모델 호출 하나의 속도뿐 아니라 전체 업무가 끝날 때까지의 시간도 중요하고요.</p>
+<p>제가 지금 쓰는 Weight 양자화와 KV Cache 양자화, Offloading 조합은 제한된 VRAM을 활용하기 위한 선택입니다. Host RAM 512GB 중 최대 100GB까지 오프로딩을 사용해 봤지만 CPU에 캐시를 더 보관하는 것과 GPU에서 한 요청을 더 길게 처리하는 건 같은 문제가 아니에요. 현재 구성의 tok/s 개선율이나 최대 동시 요청 수는 이 글에서 실측값으로 제시하지 않았습니다.</p>
+<p>GPU를 추가하기 전에 모델 Weight 때문에 부족한 건지, 긴 요청의 KV Cache 때문인지, 아니면 이미 요청이 몰려 연산이 밀리는 건지부터 구분하는 편이 좋겠습니다.</p>
+<p>참고: <a href="https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/">vLLM Expert Parallel Deployment</a>, <a href="https://docs.vllm.ai/en/latest/configuration/engine_args/">vLLM Engine Arguments</a></p>
+<p>2026년 11월 기준으로 정리한 내용이며, 오프로딩의 세부 동작은 엔진과 버전에 따라 다릅니다. 관련 설정은 <a href="https://docs.vllm.ai/">vLLM 공식 문서</a>에서 사용하는 버전에 맞춰 확인하는 게 좋겠습니다.</p>
+1e:I[27201,["$2","$3"],"IconMark"]
+d:[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$18"}}],["$","div",null,{"className":"container","children":["$","article",null,{"children":[["$","header",null,{"className":"post-header","children":[["$","$L5",null,{"href":"/","className":"back-link","children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":"true","children":["$undefined",[["$","line","0",{"x1":"19","y1":"12","x2":"5","y2":"12","children":[]}],["$","polyline","1",{"points":"12 19 5 12 12 5","children":[]}]]],"className":"$undefined","style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],"글 목록"]}],["$","span",null,{"className":"post-category","children":"AI, SW 아키텍처"}],["$","h1",null,{"children":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지"}],["$","div",null,{"className":"post-meta","children":[["$","span",null,{"children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":"true","children":["$undefined",[["$","rect","0",{"x":"3","y":"4","width":"18","height":"18","rx":"2","ry":"2","children":[]}],["$","line","1",{"x1":"16","y1":"2","x2":"16","y2":"6","children":[]}],["$","line","2",{"x1":"8","y1":"2","x2":"8","y2":"6","children":[]}],["$","line","3",{"x1":"3","y1":"10","x2":"21","y2":"10","children":[]}]]],"className":"$undefined","style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],["$","time",null,{"dateTime":"2026-11-28","children":"2026년 11월 28일"}]]}],["$","span",null,{"children":[["$","svg",null,{"stroke":"currentColor","fill":"none","strokeWidth":"2","viewBox":"0 0 24 24","strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":"true","children":["$undefined",[["$","circle","0",{"cx":"12","cy":"12","r":"10","children":[]}],["$","polyline","1",{"points":"12 6 12 12 16 14","children":[]}]]],"className":"$undefined","style":{"color":"$undefined"},"height":"1em","width":"1em","xmlns":"http://www.w3.org/2000/svg"}],17,"분"]}]]}]]}],["$","$L19",null,{"slot":"","position":"top"}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1a"}}],"$L1b","$L1c","$L1d"]}]}]]
+1b:["$","$L19",null,{"slot":"","position":"bottom"}]
+1c:["$","aside",null,{"className":"post-note","aria-label":"글 작성 안내","children":[["$","p",null,{"className":"post-note__title","children":"사람이 쓴, 사람이 검증한 기록"}],["$","p",null,{"children":"이 글은 AI가 만든 초안이 아니라 제가 직접 경험하고 확인한 내용을 바탕으로 썼습니다. AI 에이전트가 읽고 인용하기 좋게 소제목과 요약, 구조화 데이터(JSON-LD), llms.txt를 함께 갖추었습니다."}],["$","p",null,{"className":"post-note__en","lang":"en","children":"Written and verified 100% by a human, structured so AI agents can read and cite it."}]]}]
+1d:["$","nav",null,{"className":"post-nav","aria-label":"다른 글","children":[["$","$L5",null,{"href":"/posts/youth-beotimmok-hf-vs-hug/","children":[["$","span",null,{"className":"post-nav__label","children":"이전 글"}],["$","span",null,{"className":"post-nav__title","children":"청년 버팀목 HF vs HUG, 예전처럼 무조건 HUG가 답일까? (2026년 바뀐 기준 정리)"}]]}],["$","$L5",null,{"href":"/posts/llm-weight-quantization/","className":"post-nav__next","children":[["$","span",null,{"className":"post-nav__label","children":"다음 글"}],["$","span",null,{"className":"post-nav__title","children":"LLM 양자화, 4비트면 다 같을까? PTQ부터 NVFP4까지"}]]}]]}]
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0e1013","media":"(prefers-color-scheme: dark)"}]]
+10:null
+16:[["$","title","0",{"children":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지 — 이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그"}],["$","meta","1",{"name":"description","content":"2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen3.8 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다."}],["$","meta","2",{"name":"application-name","content":"이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그"}],["$","link","3",{"rel":"author","href":"https://github.com/chris-jaehoon"}],["$","meta","4",{"name":"author","content":"주재훈"}],["$","meta","5",{"name":"keywords","content":"AI, SW 아키텍처,LLM,KV Cache,vLLM,GPU"}],["$","meta","6",{"name":"creator","content":"주재훈"}],["$","meta","7",{"name":"publisher","content":"주재훈"}],["$","meta","8",{"name":"robots","content":"index, follow"}],["$","meta","9",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","10",{"name":"google-adsense-account","content":"ca-pub-4278170914101108"}],["$","link","11",{"rel":"canonical","href":"https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/"}],["$","meta","12",{"property":"og:title","content":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지"}],["$","meta","13",{"property":"og:description","content":"2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen3.8 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다."}],["$","meta","14",{"property":"og:url","content":"https://chris-jaehoon.github.io/My-Record/posts/llm-kv-cache-offloading/"}],["$","meta","15",{"property":"og:site_name","content":"이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그"}],["$","meta","16",{"property":"og:locale","content":"ko_KR"}],["$","meta","17",{"property":"og:image","content":"https://chris-jaehoon.github.io/My-Record/og.png"}],["$","meta","18",{"property":"og:image:width","content":"1200"}],["$","meta","19",{"property":"og:image:height","content":"630"}],["$","meta","20",{"property":"og:image:alt","content":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지"}],["$","meta","21",{"property":"og:type","content":"article"}],["$","meta","22",{"property":"article:published_time","content":"2026-11-28T09:00:00+09:00"}],["$","meta","23",{"property":"article:modified_time","content":"2026-11-28T09:00:00+09:00"}],["$","meta","24",{"property":"article:author","content":"주재훈"}],["$","meta","25",{"property":"article:tag","content":"LLM"}],["$","meta","26",{"property":"article:tag","content":"KV Cache"}],["$","meta","27",{"property":"article:tag","content":"vLLM"}],["$","meta","28",{"property":"article:tag","content":"GPU"}],["$","meta","29",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","30",{"name":"twitter:title","content":"LLM 서빙할 때 GPU만 늘리면 될까? 모델부터 메모리까지"}],["$","meta","31",{"name":"twitter:description","content":"2026년 11월 기준 RTX A6000 48GB와 Host RAM 512GB 환경에서 Qwen3.8 양자화 모델, MoE, KV Cache 및 최대 100GB 오프로딩 경험을 정리했습니다."}],["$","meta","32",{"name":"twitter:image","content":"https://chris-jaehoon.github.io/My-Record/og.png"}],["$","link","33",{"rel":"icon","href":"/My-Record/icon.svg?icon.1ppp26x857c6o.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1e","34",{}]]
