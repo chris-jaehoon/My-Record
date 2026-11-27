@@ -27,6 +27,14 @@ FP16에서 INT4로 바꾸면 Weight만 놓고 봤을 때 105 GB를 줄이는 셈
 
 실제로는 Scale, Zero Point, 양자화하지 않은 레이어와 실행에 필요한 메모리도 들어갑니다. 그래서 35 GB짜리 Weight라고 해서 VRAM 35 GB에 모델이 무조건 올라가는 건 아니에요.
 
+## 실제 Qwen 체크포인트를 A6000에서 비교하면?
+
+70B 이론값만 보면 실제 모델 파일이 얼마나 큰지 감이 잘 안 와요. 공식 Qwen2.5-32B-Instruct의 Hugging Face safetensors 파일을 비교하면 BF16은 약 65.5GB, [GPTQ-Int8](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int8/tree/main)은 약 35.1GB, [GPTQ-Int4](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4/tree/main)와 [AWQ](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-AWQ/tree/main)는 약 19.3GB입니다. [BF16 원본](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/tree/main)과 비교하면 INT4 파일 크기는 약 71% 줄어들어요. 이 값은 파일 크기이며 실제 VRAM이나 실측 성능은 아닙니다.
+
+RTX A6000 48GB(Ampere, SM 8.6) 한 장 기준으로 보면 원본은 Weight만으로 용량을 넘지만 INT4는 KV Cache를 위한 여유 공간을 확보하기 좋습니다. A6000에서는 FP8, NVFP4 네이티브 Tensor Core 연산이 지원되지 않으므로 해당 형식이 로딩된다고 해서 네이티브 저정밀 연산을 하는 것은 아닙니다. AWQ/GPTQ 및 Marlin 등 지원 커널과 vLLM 버전을 확인해야 합니다.
+
+제 서버의 Host RAM은 512GB이고 오프로딩은 최대 100GB까지 사용해 봤습니다. 체크포인트 비교와 캐시 용량별 계산, GPU 세대별 제약은 [LLM 서빙 글](../llm-kv-cache-offloading/)에 따로 정리했어요. 위 모델들을 모두 직접 실행해 본 비교는 아닙니다.
+
 ## 양자화하면 컨텍스트도 길어질까?
 
 Weight 양자화로 확보한 VRAM을 KV Cache에 쓸 수 있으니, 메모리 때문에 길이를 제한하고 있었다면 도움이 됩니다. 근데 Weight를 INT4로 바꾼다고 KV Cache까지 자동으로 INT4가 되는 건 아니더라고요.
