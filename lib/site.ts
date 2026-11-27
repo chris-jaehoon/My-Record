@@ -2,7 +2,7 @@ export const SITE = {
   name: "이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그",
   title: "이제는 사람이 쓴 글이 더 적어져서 쓰는 블로그",
   description:
-    "현직 SW 아키텍트가 AI 에이전트와 시스템 설계, 그리고 숫자로 따져 본 생활 경제 이야기를 담백하게 기록하는 블로그입니다.",
+    "ai가 글을 너무 많이써서 귀한 인간 자료 남기기용",
   url: "https://chris-jaehoon.github.io/My-Record",
   basePath: "/My-Record",
   locale: "ko_KR",
